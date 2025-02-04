@@ -1,0 +1,23 @@
+---
+- name: Install dependencies
+  package:
+    name:
+      - unzip
+      - curl
+    state: present
+
+- name: Download Vault binary
+  get_url:
+    url: "{{ vault_download_url }}"
+    dest: "/tmp/vault.zip"
+
+- name: Unzip Vault binary
+  unarchive:
+    src: "/tmp/vault.zip"
+    dest: "{{ vault_install_dir }}"
+    remote_src: yes
+
+- name: Ensure Vault is executable
+  file:
+    path: "{{ vault_install_dir }}/vault"
+    mode: '0755'
