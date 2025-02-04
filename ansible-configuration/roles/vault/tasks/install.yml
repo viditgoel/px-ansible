@@ -3,8 +3,14 @@
   package:
     name:
       - unzip
+    state: present
+
+- name: Remove curl-minimal and install curl
+  yum:
+    name:
       - curl
     state: present
+  become: yes
 
 - name: Remove curl-minimal to resolve conflict
   yum:
