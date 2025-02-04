@@ -6,6 +6,12 @@
       - curl
     state: present
 
+- name: Remove curl-minimal to resolve conflict
+  yum:
+    name: curl-minimal
+    state: absent
+  become: yes
+
 - name: Download Vault binary
   get_url:
     url: "{{ vault_download_url }}"
