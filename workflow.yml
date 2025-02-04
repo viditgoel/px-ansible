@@ -8,8 +8,8 @@ trigger:
 
 
 pool:
-  name: vigilx
-  demands: agent.name -equals ubuntu_agent
+  name: default
+  demands: agent.name -equals codespace
 
 steps:
 - script: echo Hello, world!
