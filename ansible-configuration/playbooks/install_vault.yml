@@ -1,0 +1,6 @@
+---
+- name: Install and configure HashiCorp Vault
+  hosts: vault_servers  # This uses localhost from your inventory
+  become: true
+  roles:
+    - vault

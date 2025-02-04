@@ -1,0 +1,22 @@
+---
+- name: Create Vault systemd service file
+  copy:
+    dest: "/etc/systemd/system/vault.service"
+    content: |
+      [Unit]
+      Description=Vault Service
+      Requires=network-online.target
+      After=network-online.target
+
+      [Service]
+      ExecStart={{ vault_install_dir }}/vault server -config={{ vault_config_file }}
+      Restart=on-failure
+
+      [Install]
+      WantedBy=multi-user.target
+
+- name: Enable and start Vault service
+  systemd:
+    name: vault
+    enabled: yes
+    state: started
