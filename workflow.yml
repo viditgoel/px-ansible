@@ -9,7 +9,7 @@ trigger:
 
 pool:
   name: vigilx
-  demands: agent.name -equals ec2-agent1
+  demands: agent.name -equals ubuntu_agent
 
 steps:
 - script: echo Hello, world!
