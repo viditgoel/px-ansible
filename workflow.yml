@@ -1,0 +1,28 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+
+pool:
+  name: vigilx
+  demands: agent.name -equals ec2-agent1
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo "Update Linux"
+    sudo yum update -y
+  displayName: 'Install Linux update'
+
+- script: |
+    echo "📦 Installing Ansible..."
+    sudo yum install -y epel-release
+    sudo yum install -y ansible
+    ansible --version
+  displayName: 'Install Ansible'
