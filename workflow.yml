@@ -17,13 +17,14 @@ steps:
 
 - script: |
     echo "Update Linux"
-    sudo yum update -y
+    sudo apt update -y
   displayName: 'Install Linux update'
 
 - script: |
     echo "📦 Installing Ansible..."
-    sudo yum install -y epel-release
-    sudo yum install -y ansible
+    sudo apt install software-properties-common
+    sudo add-apt-repository --yes --update ppa:ansible/ansible
+    sudo apt install ansible
     ansible --version
   displayName: 'Install Ansible'
 
