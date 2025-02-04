@@ -26,3 +26,6 @@ steps:
     sudo yum install -y ansible
     ansible --version
   displayName: 'Install Ansible'
+
+- script: |
+    ansible-playbook -i ansible-configuration/inventory/hosts.ini ansible-configuration/playbooks/install_vault.yml
