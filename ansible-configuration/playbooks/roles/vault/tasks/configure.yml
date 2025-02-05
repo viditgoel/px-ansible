@@ -5,6 +5,14 @@
     state: directory
     mode: '0755'
 
+- name: Get private IP using hostname and manipulate with sed
+  shell: "hostname | sed 's/ip-//; s/-/./g'"
+  register: private_ip_result
+
+- name: Set the private IP as a variable
+  set_fact:
+    PRIVATE_IP: "{{ private_ip_result.stdout }}"
+
 - name: Add Vault configuration
   copy:
     dest: "{{ vault_config_file }}"
