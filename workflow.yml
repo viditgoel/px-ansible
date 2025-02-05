@@ -8,7 +8,7 @@ trigger:
 
 pool:
   name: vigilx
-  demands: agent.name -equals codespace-agent1
+  demands: agent.name -equals ec2-agent
 
 steps:
 - script: echo Hello, world!
