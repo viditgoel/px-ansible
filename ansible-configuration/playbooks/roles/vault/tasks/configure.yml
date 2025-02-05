@@ -26,7 +26,7 @@
       }
 
       # API Address Configuration
-      api_addr = "http://{{ PRIVATE_IP }}:8200"  
+      api_addr = "http://172.31.20.29:8200"  
 
       disable_mlock = true
       ui = true
